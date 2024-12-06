@@ -795,8 +795,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {//main関数
 	////GPUとOSに画面交換を行うよう通知する
 	//swapChain->Present(1, 0);
 
-	//
-
 
 
 	//初期値０でFenceを作る
