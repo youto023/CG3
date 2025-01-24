@@ -835,6 +835,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		//今回は赤を書き込んでみる
 		materialData->color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		materialData->shininess = 70.0f;
 		materialData->enableLighting = true;
 		//今回は白で設定する
 		materialDataSprite->color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);

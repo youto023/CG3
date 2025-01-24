@@ -1,5 +1,7 @@
 #pragma once
 #include"math/Vector3.h"
+
+
 struct Transform{
 	Vector3 scale;
 	Vector3 rotate;
@@ -9,6 +11,7 @@ struct Transform{
 struct Material {
 	Vector4 color;
 	int32_t enableLighting;
+	float shininess;
 };
 
 struct TransformationMatrix {
