@@ -1,28 +1,39 @@
+#include"Vector4.h"
 #include"Particle.hlsli"
-
-
 
 struct TransformationMatrix
 {
-    float4x4 WVP;
-    float4x4 World;
+    float32_t4x4 WVP;
+    
+    float32_t4x4 World;
 };
-StructuredBuffer<TransformationMatrix> gTransformationMatrices : register(t0);
+StructuredBuffer<ParticleForGPU> gParticle : register(t0);
 
-//struct VertexShaderOutput {
-//	float32_t4 position : SV_POSITION;
-//};
+
 
 struct VertexShaderInput
 {
-    float4 position : POSITION0;
-    float2 texcoord : TEXCOORD0;
+    float32_t4 position : POSITION0;
+    float32_t2 texcoord : TEXCOORD;
 };
 
-VertexShaderOutput main(VertexShaderInput input, uint32_t instanceId : SV_InstanceID)
+
+
+
+VertexShaderOutput main(VertexShaderInput input,uint32_t instanceId:SV_InstanceID)
 {
     VertexShaderOutput output;
-    output.position = mul(input.position, gTransformationMatrices[instanceId].WVP); //output.position = input.position
+    output.position = mul(input.position,gParticle[instanceId].WVP);
     output.texcoord = input.texcoord;
+    //output.normal = normalize(mul(input.position, (float32_t3x3) gTransformationMatrices[instanceId].World));
+    output.color = gParticle[instanceId].color;
+    output.color.w = gParticle[instanceId].color.w;
     return output;
 }
+
+
+
+    
+  
+
+    
